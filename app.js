@@ -21,15 +21,26 @@ var commentRoutes       = require("./routes/comments"),
 // mongoose.connect("mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority",
 // {useNewUrlParser: true, useUnifiedTopology: true});
 
-mongoose.connect('mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('connected to YelpCamp mongoDB Atlas!');
-}).catch(err => {
-    res.send('is this thing on?');
+// mongoose.connect('mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+// }).then(() => {
+//     console.log('connected to YelpCamp mongoDB Atlas!');
+// }).catch(err => {
+//     res.send('is this thing on?');
+// });
+
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
 });
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", 'ejs');

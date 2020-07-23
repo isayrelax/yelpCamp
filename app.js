@@ -18,8 +18,19 @@ var commentRoutes       = require("./routes/comments"),
 
 //connect to yelp_camp database (didnt exist when code first ran)
 //mongoose.connect("mongodb://frank/yelp_camp_v9",{useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect("mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority",
-{useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect("mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority",
+// {useNewUrlParser: true, useUnifiedTopology: true});
+
+mongoose.connect('mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('connected to YelpCamp mongoDB Atlas!');
+}).catch(err => {
+    res.send('is this thing on?');
+});
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", 'ejs');
 app.use(express.static(__dirname + "/public"));

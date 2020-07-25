@@ -16,7 +16,7 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     authRoutes          = require("./routes/index");
 
-//connect to yelp_camp database (didnt exist when code first ran)
+//connect to yelp_camp addafssdatabase (didnt exist when code first ran)
 //mongoose.connect("mongodb://frank/yelp_camp_v9",{useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connect("mongodb+srv://useruser2:QY2wRkcnKdNV38X@cluster0.zvmvz.mongodb.net/<dbname>?retryWrites=true",
 {useNewUrlParser: true, 

@@ -16,6 +16,10 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     authRoutes          = require("./routes/index");
 
+//backup option of database access went wrong
+var url = process.env.DATABASEURL || "mongodb://lolhost/yelp_camp_v9"
+mongoose.connect(url);
+
 
 console.log(process.env.DATABASEURL);
 //connect to yelp_camp addafssdatabase (didnt exist when code first ran)
